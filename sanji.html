@@ -1,0 +1,702 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sanji Food - Moroccan Fast Food Larache</title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            line-height: 1.6;
+            color: #333;
+        }
+
+        /* Header */
+        header {
+            background: linear-gradient(135deg, #ff6b35, #f7931e);
+            color: white;
+            padding: 1rem 0;
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+
+        nav {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0 2rem;
+        }
+
+        .logo {
+            font-size: 1.8rem;
+            font-weight: 700;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .logo i {
+            font-size: 2rem;
+            color: #fff;
+        }
+
+        .nav-links {
+            display: flex;
+            list-style: none;
+            gap: 2rem;
+        }
+
+        .nav-links a {
+            color: white;
+            text-decoration: none;
+            font-weight: 500;
+            transition: opacity 0.3s;
+        }
+
+        .nav-links a:hover {
+            opacity: 0.8;
+        }
+
+        .mobile-menu {
+            display: none;
+            font-size: 1.5rem;
+            cursor: pointer;
+        }
+
+        /* Hero Section */
+        .hero {
+    /* Fond noir + un voile sombre (0.7) par-dessus l'image pour réduire l'éclairage */
+    background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), 
+                url('sanji-logo.jpg');
+    background-color: #000;
+    background-size: contain;
+    background-position: center;
+    background-repeat: no-repeat;
+    
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    color: white;
+    margin-top: 70px;
+}
+
+.hero-content {
+    background: transparent; /* On enlève le fond noir */
+    padding: 20px;
+    margin-top: 350px; /* On descend encore un peu pour ne pas cacher le logo burger */
+    box-shadow: none; /* On enlève l'ombre de la boîte */
+    border: none; /* On enlève la bordure */
+}
+
+.hero-content h1 {
+    font-size: 4rem;
+    margin-bottom: 1rem;
+    /* On garde une ombre sur les LETTRES pour qu'elles restent lisibles */
+    text-shadow: 3px 3px 6px rgba(0,0,0,0.9); 
+    color: #ffffff;
+    font-weight: 800;
+}
+
+.hero-content .rating, .hero-content p {
+    /* Ombre sur le petit texte aussi pour la clarté */
+    text-shadow: 2px 2px 4px rgba(0,0,0,0.9);
+    font-weight: 500;
+}
+
+        .cta-buttons {
+            display: flex;
+            gap: 1rem;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        .btn {
+            padding: 15px 30px;
+            border: none;
+            border-radius: 50px;
+            font-size: 1.1rem;
+            font-weight: 600;
+            text-decoration: none;
+            transition: all 0.3s;
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .btn-primary {
+            background: #ff6b35;
+            color: white;
+        }
+
+        .btn-primary:hover {
+            background: #e55a2b;
+            transform: translateY(-3px);
+        }
+
+        .btn-secondary {
+            background: transparent;
+            color: white;
+            border: 2px solid white;
+        }
+
+        .btn-secondary:hover {
+            background: white;
+            color: #ff6b35;
+        }
+
+        /* Sections */
+        section {
+            padding: 80px 0;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+        }
+
+        .section-title {
+            text-align: center;
+            font-size: 2.5rem;
+            margin-bottom: 3rem;
+            color: #333;
+        }
+
+        /* Info Section */
+        .info-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+
+        .info-card {
+            background: white;
+            padding: 2rem;
+            border-radius: 20px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+            text-align: center;
+            transition: transform 0.3s;
+        }
+
+        .info-card:hover {
+            transform: translateY(-10px);
+        }
+
+        .info-card i {
+            font-size: 3rem;
+            color: #ff6b35;
+            margin-bottom: 1rem;
+        }
+
+        /* Menu Section */
+        .menu-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+
+        .menu-item {
+            background: white;
+            border-radius: 20px;
+            overflow: hidden;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+            transition: transform 0.3s;
+        }
+
+        .menu-item:hover {
+            transform: translateY(-10px);
+        }
+
+        .menu-item img {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+        }
+
+        .menu-content {
+            padding: 1.5rem;
+        }
+
+        .menu-price {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: #ff6b35;
+            margin: 1rem 0;
+        }
+
+        /* Reviews Section */
+        .reviews-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+
+        .review-card {
+            background: white;
+            padding: 2rem;
+            border-radius: 20px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+        }
+
+        .stars {
+            color: #ff6b35;
+            font-size: 1.2rem;
+            margin-bottom: 1rem;
+        }
+
+        /* Contact Section */
+        .contact-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+            align-items: center;
+        }
+
+        .contact-info h3 {
+            color: #ff6b35;
+            margin-bottom: 1rem;
+        }
+
+        .contact-item {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .contact-item i {
+            background: #ff6b35;
+            color: white;
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.2rem;
+        }
+
+        /* Footer */
+        footer {
+            background: #333;
+            color: white;
+            text-align: center;
+            padding: 3rem 0 1rem;
+        }
+
+        .social-links {
+            display: flex;
+            justify-content: center;
+            gap: 1rem;
+            margin: 2rem 0;
+        }
+
+        .social-links a {
+            color: white;
+            font-size: 1.5rem;
+            transition: color 0.3s;
+        }
+
+        .social-links a:hover {
+            color: #ff6b35;
+        }
+
+        /* Animations */
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* Mobile Responsive */
+        @media (max-width: 768px) {
+            .nav-links {
+                display: none;
+            }
+
+            .mobile-menu {
+                display: block;
+            }
+
+            .hero-content h1 {
+                font-size: 2.5rem;
+            }
+
+            .cta-buttons {
+                flex-direction: column;
+                align-items: center;
+            }
+
+            .contact-content {
+                grid-template-columns: 1fr;
+                gap: 2rem;
+            }
+
+            .section-title {
+                font-size: 2rem;
+            }
+            .social-contact {
+        display: flex;
+        gap: 1rem;
+        margin-top: 1rem;
+    }
+
+    .social-btn {
+        display: flex;
+        align-items: center;
+        gap: 0.5rem;
+        padding: 12px 20px;
+        border-radius: 25px;
+        text-decoration: none;
+        font-weight: 600;
+        transition: all 0.3s;
+        border: 2px solid #ff6b35;
+        color: #ff6b35;
+    }
+
+    .social-btn:hover {
+        background: #ff6b35;
+        color: white;
+        transform: translateY(-2px);
+    }
+
+    .social-btn i {
+        font-size: 1.2rem;
+    }
+}
+/* --- COPIE CE BLOC ICI --- */
+.social-contact {
+    display: flex;
+    gap: 1.5rem;
+    margin-top: 1.5rem;
+}
+
+.social-btn {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 12px 20px;
+    border-radius: 10px;
+    text-decoration: none;
+    font-weight: 600;
+    transition: all 0.3s;
+    /* Couleur orange Sanji */
+    border: 2px solid #ff6b35; 
+    color: #ff6b35 !important; /* Force la couleur orange */
+    background: transparent;
+}
+
+.social-btn:hover {
+    background: #ff6b35;
+    color: white !important;
+    transform: translateY(-3px);
+}
+/* ------------------------ */
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <nav>
+            <div class="logo">
+                <i class="fas fa-utensils"></i>
+                Sanji Food
+            </div>
+            <ul class="nav-links">
+                <li><a href="#home">Home</a></li>
+                <li><a href="#menu">Menu</a></li>
+                <li><a href="#reviews">Reviews</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+            <div class="mobile-menu">
+                <i class="fas fa-bars"></i>
+            </div>
+        </nav>
+    </header>
+
+    <!-- Hero Section -->
+    <section id="home" class="hero">
+        <div class="hero-content">
+            <h1>Sanji Food</h1>
+            <div class="rating">
+                <i class="fas fa-star"></i>
+                <i class="fas fa-star"></i>
+                <i class="fas fa-star"></i>
+                <i class="fas fa-star"></i>
+                <i class="fas fa-star-half-alt"></i>
+                3.7 (86 reviews)
+            </div>
+            <p>Authentic Moroccan fast food in Larache. Dine-in, Takeaway & Delivery available. MAD 1–50 per person.</p>
+            <div class="cta-buttons">
+                <a href="#menu" class="btn btn-primary">
+                    <i class="fas fa-utensils"></i>
+                    View Menu
+                </a>
+                <a href="#contact" class="btn btn-secondary">
+                    <i class="fas fa-phone"></i>
+                    Call Now
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Info Section -->
+    <section id="info" class="container">
+        <h2 class="section-title">Why Choose Sanji Food?</h2>
+        <div class="info-grid">
+            <div class="info-card">
+                <i class="fas fa-clock"></i>
+                <h3>Open Late</h3>
+                <p>Open until 2:30 AM - perfect for late night cravings!</p>
+            </div>
+            <div class="info-card">
+                <i class="fas fa-shipping-fast"></i>
+                <h3>Fast Delivery</h3>
+                <p>Quick delivery across Larache. Order now!</p>
+            </div>
+            <div class="info-card">
+                <i class="fas fa-utensils"></i>
+                <h3>3 Services</h3>
+                <p>Dine-in · Takeaway · Delivery</p>
+            </div>
+            <div class="info-card">
+                <i class="fas fa-map-marker-alt"></i>
+                <h3>Location</h3>
+                <p>5RPW+XQ4, Larache</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Menu Section -->
+    <!-- Menu Section -->
+<section id="menu" style="background: #f8f9fa;">
+    <div class="container">
+        <h2 class="section-title">Notre Menu Gourmand</h2>
+        <p style="text-align: center; font-size: 1.1rem; margin-bottom: 3rem; color: #666;">
+            Découvrez nos spécialités préparées avec passion à Larache.
+        </p>
+        
+        <div class="menu-grid">
+           <!-- Item 1: Tacos -->
+<div class="menu-item">
+    <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/c/c5/O%27Tacos_-_Lyonnais_tacos.jpg/800px-O%27Tacos_-_Lyonnais_tacos.jpg" alt="Tacos Lyonnais Mixte">
+    <div class="menu-content">
+        <h3>Tacos Lyonnais Mixte</h3>
+        <div class="menu-price">35 MAD</div>
+        <p>L'authentique : Galette rectangulaire pressée au grill, garnie de viandes au choix, frites et notre célèbre sauce fromagère maison.</p>
+    </div>
+</div>
+
+            <!-- Item 2: Burger -->
+            <div class="menu-item">
+                <img src="https://images.unsplash.com/photo-1568901346375-23c9450c58cd?auto=format&fit=crop&w=800&q=80" alt="Burger">
+                <div class="menu-content">
+                    <h3>Double Cheese Burger</h3>
+                    <div class="menu-price">40 MAD</div>
+                    <p>Deux steaks pur bœuf, double fromage, oignons caramélisés et crudités fraîches.</p>
+                </div>
+            </div>
+
+            <!-- Item 3: Bocadillo -->
+            <div class="menu-item">
+                <img src="https://images.unsplash.com/photo-1550507992-eb63ffee0847?auto=format&fit=crop&w=800&q=80" alt="Bocadillo">
+                <div class="menu-content">
+                    <h3>Bocadillo Larache</h3>
+                    <div class="menu-price">25 MAD</div>
+                    <p>Le classique local : Pain frais, thon ou merguez, frites, riz et salade marocaine.</p>
+                </div>
+            </div>
+
+            <!-- Item 4: Panini -->
+            <div class="menu-item">
+                <img src="https://images.unsplash.com/photo-1528733918455-5a59687cedf0?auto=format&fit=crop&w=800&q=80" alt="Panini">
+                <div class="menu-content">
+                    <h3>Panini Kefta Fromage</h3>
+                    <div class="menu-price">30 MAD</div>
+                    <p>Pain panini grillé, kefta épicée à la marocaine et fondant de fromage rouge.</p>
+                </div>
+            </div>
+
+            <!-- Item 5: Plat Assiette -->
+            <div class="menu-item">
+                <img src="https://images.unsplash.com/photo-1544025162-d76694265947?auto=format&fit=crop&w=800&q=80" alt="Plat Grillades">
+                <div class="menu-content">
+                    <h3>Assiette Mixte Grill</h3>
+                    <div class="menu-price">55 MAD</div>
+                    <p>Un festival de saveurs : Brochettes de poulet, kefta, frites, riz et assortiment de salades.</p>
+                </div>
+            </div>
+
+            <!-- Item 6: Jus Frais -->
+            <div class="menu-item">
+                <img src="https://images.unsplash.com/photo-1570197788417-0e93323c98bd?auto=format&fit=crop&w=800&q=80" alt="Jus Panaché">
+                <div class="menu-content">
+                    <h3>Jus Panaché Royal</h3>
+                    <div class="menu-price">20 MAD</div>
+                    <p>Mélange de fruits de saison mixés pour une fraîcheur maximale.</p>
+                </div>
+            </div>
+        </div>
+
+        <div style="text-align: center; margin-top: 40px;">
+            <a href="https://www.instagram.com/sanji_food_larache/" target="_blank" class="btn btn-primary">
+                <i class="fab fa-instagram"></i> Voir tout le menu sur Instagram
+            </a>
+        </div>
+    </div>
+</section>
+
+    <!-- Reviews Section -->
+    <section id="reviews">
+        <div class="container">
+            <h2 class="section-title">What Our Customers Say</h2>
+            <div class="reviews-grid">
+                <div class="review-card">
+                    <div class="stars">
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                    </div>
+                    <p>"Best fast food in Larache! Quick service and great taste."</p>
+                    <div style="margin-top: 1rem; font-weight: 600;">- Ahmed K.</div>
+                </div>
+                <div class="review-card">
+                    <div class="stars">
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star-half-alt"></i>
+                    </div>
+                    <p>"Delivery was super fast. Food was still hot and delicious!"</p>
+                    <div style="margin-top: 1rem; font-weight: 600;">- Fatima M.</div>
+                </div>
+                <div class="review-card">
+                    <div class="stars">
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="far fa-star"></i>
+                    </div>
+                    <p>"Good portions for the price. Will order again."</p>
+                    <div style="margin-top: 1rem; font-weight: 600;">- Omar S.</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+<!-- Contact Section -->
+<!-- Section Contact -->
+<section id="contact" style="background: #f8f9fa; padding: 80px 0;">
+    <div class="container">
+        <h2 class="section-title">Contact Us</h2>
+        <div class="contact-content">
+            
+            <!-- Partie Gauche : Infos (Téléphone, Adresse, Réseaux) -->
+            <div class="contact-info">
+                <h3>Get In Touch</h3>
+                <div class="contact-item">
+                    <i class="fas fa-phone"></i>
+                    <div>
+                        <div style="font-weight: 600;">Phone</div>
+                        <a href="tel:+212704357142" style="color: #333; text-decoration: none;">07 04 35 71 42</a>
+                    </div>
+                </div>
+                <div class="contact-item">
+                    <i class="fas fa-map-marker-alt"></i>
+                    <div>
+                        <div style="font-weight: 600;">Address</div>
+                        5RPW+XQ4, Larache
+                    </div>
+                </div>
+                <div class="contact-item">
+                    <i class="fas fa-clock"></i>
+                    <div>
+                        <div style="font-weight: 600;">Hours</div>
+                        Open until 2:30 AM
+                    </div>
+                </div>
+                
+                <div class="social-contact">
+                    <a href="https://www.instagram.com/sanji_food_larache/" target="_blank" class="social-btn">
+                        <i class="fab fa-instagram"></i> Instagram
+                    </a>
+                    <a href="https://www.facebook.com/p/Sanji-Food-Larache-100069559005907/" target="_blank" class="social-btn">
+                        <i class="fab fa-facebook-f"></i> Facebook
+                    </a>
+                </div>
+            </div>
+
+            <!-- Partie Droite : LA CARTE MAPS (C'est ICI qu'on change) -->
+            <div style="text-align: center;">
+                <!-- Carte interactive -->
+                <iframe 
+                    src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d12898.37466854585!2d-6.1466606!3d35.1509658!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0xd0bcfa468bf4f01%3A0x77a5efed742549fc!2sSanji%20Food!5e0!3m2!1sfr!2sma!4v1715694200000!5m2!1sfr!2sma" 
+                    width="100%" 
+                    height="350" 
+                    style="border:0; border-radius: 20px; box-shadow: 0 10px 20px rgba(0,0,0,0.1);" 
+                    allowfullscreen="" 
+                    loading="lazy">
+                </iframe>
+                
+                <br><br>
+                
+                <!-- Ton lien exact pour l'itinéraire -->
+                <a href="https://www.google.com/maps/place/sanji+food/data=!4m2!3m1!1s0xd0bcfa468bf4f01:0x77a5efed742549fc?sa=X&ved=1t:242&ictx=111" 
+                   target="_blank" 
+                   class="social-btn" 
+                   style="display: flex; justify-content: center; align-items: center;">
+                    <i class="fas fa-directions"></i> Itinéraire Google Maps
+                </a>
+            </div>
+
+        </div>
+    </div>
+</section>
+<!-- Footer -->
+    <footer>
+        <div class="container">
+            <p>&copy; 2024 Sanji Food Larache - Tous droits réservés.</p>
+            <div class="social-links">
+                <a href="https://www.facebook.com/p/Sanji-Food-Larache-100069559005907/" target="_blank"><i class="fab fa-facebook"></i></a>
+                <a href="https://www.instagram.com/sanji_food_larache/" target="_blank"><i class="fab fa-instagram"></i></a>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Script pour le menu mobile (Optionnel mais recommandé) -->
+    <script>
+        const mobileMenu = document.querySelector('.mobile-menu');
+        const navLinks = document.querySelector('.nav-links');
+
+        mobileMenu.addEventListener('click', () => {
+            // Cette ligne permet d'afficher ou cacher le menu sur téléphone
+            navLinks.style.display = navLinks.style.display === 'flex' ? 'none' : 'flex';
+        });
+    </script>
+</body>
+</html>
